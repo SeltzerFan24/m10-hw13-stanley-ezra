@@ -1,5 +1,8 @@
 # ES6 Refactor
 
+I looked at various W3 and Mozilla websites and asked a developer friend for hints on how to complete the assignment.
+
+
 &nbsp;
 ## Background
 
