@@ -4,7 +4,7 @@ const formEl = document.querySelector('form');
 const inputEl = document.querySelector('input');
 
 
-formEl.onsubmit = function(e) {
+formEl.onsubmit = e => {
   // prevent the page from refreshing
   e.preventDefault();
 
@@ -35,7 +35,7 @@ async function getWeather(query) {
     )
 
     const data = await response.json()
-    
+
     if (data.cod === "404") throw new Error('location not found')
       // create weather icon URL
       var iconUrl = 'https://openweathermap.org/img/wn/' +
