@@ -41,10 +41,11 @@ async function getWeather(query) {
       var iconUrl = 'https://openweathermap.org/img/wn/' +
         data.weather[0].icon +
         '@2x.png'
-      var description = data.weather[0].description
-      var actualTemp = data.main.temp
-      var feelsLikeTemp = data.main.feels_like
-      var place = data.name + ", " + data.sys.country
+      let description = data.weather[0].description
+      let {main , temp} = data;
+      // let actualTemp = data.main.temp
+      let feelsLikeTemp = data.main.feels_like
+      let place = data.name + ", " + data.sys.country
       // create JS date object from Unix timestamp
       var updatedAt = new Date(data.dt * 1000)
       // this object is used by displayWeatherInfo to update the HTML
@@ -52,7 +53,7 @@ async function getWeather(query) {
         coords: data.coord.lat + ',' + data.coord.lon,
         description: description,
         iconUrl: iconUrl,
-        actualTemp: actualTemp,
+        actualTemp: main.temp,
         feelsLikeTemp: feelsLikeTemp,
         place: place,
         updatedAt: updatedAt
@@ -109,9 +110,6 @@ function displayWeatherInfo(weatherObj) {
   // current temperature
   var temp = document.createElement('p')
   temp.textContent = `Current: ${weatherObj.actualTemp}° F`
-    // temp.textContent = "Current: " +
-    //   weatherObj.actualTemp +
-    //   "° F"
   weatherContainer.appendChild(temp)
 
   // "feels like" temperature
